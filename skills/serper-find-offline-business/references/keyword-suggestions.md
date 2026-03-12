@@ -1,0 +1,35 @@
+# Keyword Suggestions by Business Category
+
+When a user mentions a business type, suggest these related keywords. Present the top 20 and let the user pick.
+
+## Healthcare & Medical
+- **Dentist**: dentist, dental clinic, dental office, cosmetic dentist, family dentist, pediatric dentist, orthodontist, oral surgeon, emergency dentist, teeth whitening, dental implants, dentures, periodontist, endodontist, dental hygienist, prosthodontist, dental lab, dental care, dental practice, wisdom teeth removal
+- **Doctor**: doctor, physician, family doctor, primary care physician, internal medicine, general practitioner, medical clinic, walk-in clinic, urgent care, health clinic, medical practice, concierge doctor, holistic doctor, naturopathic doctor, osteopath, medical center, healthcare clinic, preventive care, annual checkup, wellness clinic
+- **Chiropractor**: chiropractor, chiropractic clinic, spine specialist, back pain clinic, spinal adjustment, chiropractic care, sports chiropractor, pediatric chiropractor, prenatal chiropractor, neck pain treatment, posture correction, chiropractic wellness, spinal decompression, chiropractic rehab, pain management, holistic chiropractor, chiropractic adjustment, joint pain, nerve pain, sciatica treatment
+- **Physical Therapist**: physical therapist, physical therapy clinic, PT clinic, sports physical therapy, orthopedic PT, rehabilitation center, occupational therapy, hand therapy, pelvic floor therapy, aquatic therapy, post-surgery rehab, sports rehab, injury recovery, pain rehab, balance therapy, geriatric physical therapy, vestibular therapy, dry needling, manual therapy, movement therapy
+- **Veterinarian**: veterinarian, vet clinic, animal hospital, pet clinic, emergency vet, veterinary hospital, dog vet, cat vet, exotic pet vet, mobile vet, holistic vet, veterinary surgeon, pet vaccinations, spay neuter clinic, animal care, pet wellness, veterinary practice, large animal vet, equine vet, vet specialist
+
+## Home Services
+- **Plumber**: plumber, plumbing company, plumbing service, emergency plumber, drain cleaning, water heater repair, pipe repair, sewer line, leak repair, bathroom plumber, kitchen plumber, commercial plumber, residential plumber, plumbing contractor, water line repair, gas line plumber, toilet repair, faucet installation, garbage disposal, water filtration
+- **Electrician**: electrician, electrical contractor, electrical service, residential electrician, commercial electrician, emergency electrician, electrical repair, wiring service, panel upgrade, electrical installation, lighting electrician, generator installation, EV charger installation, home rewiring, circuit breaker, outlet repair, ceiling fan installation, electrical inspection, surge protection, smart home wiring
+- **HVAC**: HVAC, heating and cooling, air conditioning repair, furnace repair, HVAC contractor, AC installation, heat pump, duct cleaning, HVAC service, central air, mini split, thermostat installation, HVAC maintenance, commercial HVAC, residential HVAC, air quality, ventilation, boiler repair, radiant heating, HVAC replacement
+- **Roofer**: roofer, roofing company, roof repair, roof replacement, roofing contractor, shingle roof, metal roofing, flat roof repair, roof inspection, emergency roof repair, commercial roofing, residential roofing, gutter installation, roof leak repair, storm damage roof, roof maintenance, tile roofing, slate roofing, roofing estimate, skylight installation
+- **Landscaper**: landscaper, landscaping company, lawn care, lawn mowing, garden design, tree trimming, hardscaping, landscape design, irrigation, sod installation, mulching, hedge trimming, yard cleanup, landscape maintenance, outdoor lighting, paver installation, retaining wall, landscape architect, commercial landscaping, seasonal cleanup
+
+## Professional Services
+- **Lawyer**: lawyer, attorney, law firm, legal services, personal injury lawyer, family lawyer, divorce attorney, criminal defense, business lawyer, estate planning, immigration lawyer, real estate attorney, employment lawyer, bankruptcy attorney, DUI lawyer, tax attorney, civil litigation, contract lawyer, intellectual property, medical malpractice
+- **Accountant**: accountant, CPA, accounting firm, tax preparation, bookkeeping, tax accountant, business accountant, payroll services, financial advisor, tax planning, audit services, small business accountant, corporate accountant, enrolled agent, QuickBooks accountant, forensic accountant, estate accounting, nonprofit accountant, management accounting, virtual accountant
+- **Insurance Agent**: insurance agent, insurance broker, auto insurance, home insurance, life insurance, health insurance, business insurance, commercial insurance, insurance agency, State Farm agent, Allstate agent, independent insurance, flood insurance, umbrella insurance, renters insurance, disability insurance, workers comp, liability insurance, insurance advisor, insurance consultant
+
+## Food & Hospitality
+- **Restaurant**: restaurant, dining, eatery, family restaurant, fine dining, casual dining, fast casual, bistro, cafe, diner, steakhouse, seafood restaurant, Italian restaurant, Mexican restaurant, Chinese restaurant, Japanese restaurant, Thai restaurant, Indian restaurant, pizza, brunch spot
+- **Bakery**: bakery, cake shop, pastry shop, bread bakery, custom cakes, wedding cakes, cupcakes, donut shop, artisan bakery, French bakery, gluten free bakery, vegan bakery, wholesale bakery, specialty cakes, patisserie, bake shop, cookie shop, pie shop, breakfast bakery, dessert shop
+- **Catering**: catering, catering service, event catering, wedding catering, corporate catering, BBQ catering, food truck catering, private chef, party catering, buffet catering, drop off catering, full service catering, catering company, lunch catering, breakfast catering, holiday catering, taco catering, catering near me, affordable catering, gourmet catering
+
+## Automotive
+- **Auto Repair**: auto repair, mechanic, car repair, auto shop, brake repair, oil change, transmission repair, auto body shop, tire shop, engine repair, car maintenance, exhaust repair, suspension repair, alignment, car diagnostic, muffler shop, radiator repair, AC repair auto, smog check, mobile mechanic
+- **Car Dealer**: car dealer, used cars, auto dealer, car dealership, pre-owned cars, certified used, new car dealer, truck dealer, SUV dealer, luxury car dealer, buy here pay here, car lot, auto sales, vehicle dealer, car buying, trade in, car financing, lease deals, test drive, inventory search
+
+## Beauty & Wellness
+- **Hair Salon**: hair salon, barber shop, beauty salon, hair stylist, haircut, hair color, blowout bar, men's haircut, women's salon, kids haircut, balayage, highlights, keratin treatment, extensions, braids, natural hair salon, curly hair specialist, wedding hair, updo, hair spa
+- **Spa**: spa, day spa, massage, facial, med spa, nail salon, waxing, body treatment, couples massage, deep tissue massage, hot stone massage, microdermabrasion, chemical peel, botox, laser treatment, wellness spa, relaxation, aromatherapy, body wrap, infrared sauna
