@@ -1,6 +1,6 @@
 ---
 name: serper-find-offline-business
-description: Find offline businesses (plumbers, dentists, restaurants, etc.) across US states using Serper Places API. Use when user wants to "find businesses", "search for local services", "generate business leads", "find offline businesses", "scrape Google Maps places", or "search places". Handles search configuration, execution, filtering, deduplication, and webhook delivery.
+description: Find offline businesses across US states using Serper Places API. Use when user wants to "find businesses", "search local services", "generate leads", "find offline businesses", "scrape Google Maps", or "search places". Filters, deduplicates, and sends to webhooks.
 license: MIT
 metadata:
   author: kushagra-gtme
