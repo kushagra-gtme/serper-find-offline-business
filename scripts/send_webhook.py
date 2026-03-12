@@ -30,8 +30,9 @@ async def send_webhook(
     run_id: str,
     webhook_url: str,
     data_dir: Path,
-    batch_size: int = 50,
+    batch_size: int = 10,
     max_retries: int = 3,
+    delay: float = 1.0,
     job_titles: list = None,
 ) -> dict:
     logger = logging.getLogger("serper")
@@ -90,6 +91,11 @@ async def send_webhook(
                                 if attempt > 0:
                                     retried += 1
                                 return (idx, True, None)
+                            elif resp.status == 429 and attempt < max_retries - 1:
+                                wait = 2 ** (attempt + 1)
+                                logger.debug(f"Rate limited on record {idx}, waiting {wait}s")
+                                await asyncio.sleep(wait)
+                                continue
                             elif resp.status >= 500 and attempt < max_retries - 1:
                                 await asyncio.sleep(2 ** attempt)
                                 continue
@@ -128,7 +134,7 @@ async def send_webhook(
         if (i + batch_size) % 200 == 0 or i + batch_size >= len(rows):
             print(f"  [{min(i + batch_size, len(rows))}/{len(rows)}] sent={sent} failed={failed}", file=sys.stderr)
 
-        await asyncio.sleep(0.1)
+        await asyncio.sleep(delay)
 
     # Finalize
     progress["status"] = "completed" if failed == 0 else "completed_with_errors"
@@ -149,8 +155,9 @@ def main():
     parser = argparse.ArgumentParser(description="Send search results to webhook")
     parser.add_argument("--run-id", required=True, help="Run ID")
     parser.add_argument("--webhook-url", required=True, help="Webhook URL")
-    parser.add_argument("--batch-size", type=int, default=50, help="Concurrent requests (default: 50)")
+    parser.add_argument("--batch-size", type=int, default=10, help="Concurrent requests per batch (default: 10, matches Clay 10/sec limit)")
     parser.add_argument("--max-retries", type=int, default=3, help="Max retries per record (default: 3)")
+    parser.add_argument("--delay", type=float, default=1.0, help="Delay in seconds between batches (default: 1.0)")
     parser.add_argument("--job-titles", nargs="+", default=None, help="Job titles to include in payload")
     parser.add_argument("--data-dir", type=str, default=None, help="Data directory")
 
@@ -177,6 +184,7 @@ def main():
         data_dir=data_dir,
         batch_size=args.batch_size,
         max_retries=args.max_retries,
+        delay=args.delay,
         job_titles=args.job_titles,
     ))
 
