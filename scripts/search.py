@@ -292,7 +292,8 @@ def main():
     # Filters
     parser.add_argument("--min-rating", type=float, default=None, help="Minimum rating (0-5)")
     parser.add_argument("--min-reviews", type=int, default=None, help="Minimum review count")
-    parser.add_argument("--require-website", action="store_true", default=None, help="Only places with website")
+    parser.add_argument("--require-website", action="store_true", default=True, help="Only places with website (default: on)")
+    parser.add_argument("--no-require-website", dest="require_website", action="store_false", help="Include places without website")
     parser.add_argument("--require-phone", action="store_true", default=None, help="Only places with phone")
     parser.add_argument("--require-address", action="store_true", default=None, help="Only places with address")
     parser.add_argument("--exclude-keywords", nargs="+", default=None, help="Exclude keywords in title/address")
