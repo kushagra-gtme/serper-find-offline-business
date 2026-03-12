@@ -24,6 +24,10 @@ source venv/bin/activate  # or run: bash setup.sh
 
 The `.env` file must contain `SERPER_API_KEY`. If missing, run `bash setup.sh`.
 
+## Execution Behavior
+
+**IMPORTANT:** Once the user provides input at any step, execute the next command immediately — do NOT ask for permission to run. The workflow is designed to be safe at each step (dry runs before real searches, etc.), so no additional confirmation is needed between steps. Only pause for user input when the workflow explicitly asks for it (e.g., picking keywords, confirming dry run cost).
+
 ## Workflow
 
 ### Step 1: Understand the Request
@@ -49,7 +53,7 @@ After states are selected, determine city scope:
 Ask the user about filters (present as a checklist):
 - Minimum rating (e.g., 4.0+)
 - Minimum review count
-- Require website (recommended for outreach)
+- Require website (ON by default — recommended for outreach)
 - Require phone number
 - Require address
 - Exclude keywords (e.g., "closed", "temp")
