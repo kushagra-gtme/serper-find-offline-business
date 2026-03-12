@@ -58,19 +58,26 @@ def filter_cities_by_states(
     limit_per_state: Optional[int] = None,
 ) -> List[str]:
     """Filter cities matching the given states. Optionally limit per state."""
-    states_lower = [s.lower() for s in states]
-    state_buckets: Dict[str, List[str]] = {s: [] for s in states_lower}
+    # Resolve state codes to full names for matching
+    state_names: Dict[str, str] = {}
+    for s in states:
+        code = s.upper().strip()
+        full_name = US_STATE_NAMES.get(code, code).lower()
+        state_names[code.lower()] = full_name
+
+    state_buckets: Dict[str, List[str]] = {k: [] for k in state_names}
 
     for city in cities:
         city_str = city.get("city", "") or city.get("location", "")
-        for state in states_lower:
-            if state in city_str.lower():
-                state_buckets[state].append(city_str)
+        city_lower = city_str.lower()
+        for code, full_name in state_names.items():
+            if full_name in city_lower:
+                state_buckets[code].append(city_str)
                 break
 
     result = []
-    for state in states_lower:
-        bucket = state_buckets[state]
+    for code in state_names:
+        bucket = state_buckets[code]
         if limit_per_state:
             result.extend(bucket[:limit_per_state])
         else:
