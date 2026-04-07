@@ -25,7 +25,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 from lib.client import SerperClient, SerperAPIError
 from lib.models import Query, Place, RunConfig, RunProgress, PlaceFilters
 from lib.storage import FileManager
-from lib.filters import filter_places, deduplicate_places, normalize_url
+from lib.filters import filter_places, deduplicate_places
+from lib.extract import extract_places, BATCH_SIZE
 from lib.locations import load_cities, filter_cities_by_states, get_state_locations
 from lib.utils import (
     setup_logging,
@@ -33,35 +34,6 @@ from lib.utils import (
     progress_msg,
     validate_search_inputs,
 )
-
-
-def extract_places(result: list) -> list:
-    """Extract Place objects from Serper API batch response."""
-    places = []
-    if not isinstance(result, list):
-        return places
-    for qr in result:
-        params = qr.get("searchParameters", {})
-        for p in qr.get("places", []):
-            raw_website = p.get("website")
-            places.append(Place(
-                q=params.get("q", ""),
-                location=params.get("location", ""),
-                page=params.get("page", 1),
-                position=p.get("position", 0),
-                title=p.get("title", ""),
-                address=p.get("address", ""),
-                latitude=p.get("latitude"),
-                longitude=p.get("longitude"),
-                rating=p.get("rating"),
-                ratingCount=p.get("ratingCount"),
-                category=p.get("category"),
-                phoneNumber=p.get("phoneNumber"),
-                website=raw_website,
-                website_normalized=normalize_url(raw_website),
-                cid=p.get("cid"),
-            ))
-    return places
 
 
 async def run_search(args, data_dir: Path, api_key: str) -> dict:
@@ -87,8 +59,7 @@ async def run_search(args, data_dir: Path, api_key: str) -> dict:
             for page in range(1, args.pages + 1):
                 queries.append(Query(q=term, location=loc, page=page))
 
-    batch_size = 100
-    total_batches = (len(queries) + batch_size - 1) // batch_size
+    total_batches = (len(queries) + BATCH_SIZE - 1) // BATCH_SIZE
     cost_estimate = len(queries)
 
     # Dry run
@@ -152,7 +123,7 @@ async def run_search(args, data_dir: Path, api_key: str) -> dict:
     print(f"  {len(queries)} queries across {len(locations)} {location_type} in {total_batches} batches", file=sys.stderr)
 
     # Execute
-    batches = list(batch_list(queries, batch_size))
+    batches = list(batch_list(queries, BATCH_SIZE))
     completed = 0
     failed = 0
     total_places = 0

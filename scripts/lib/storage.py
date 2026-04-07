@@ -28,7 +28,7 @@ class FileManager:
         search_terms: List[str],
         states: List[str],
         cities: Optional[List[str]] = None,
-    ) -> tuple:
+    ) -> tuple[str, Path]:
         """Create a run folder with naming: YYYYMMDD-HHMMSS--<term>--<states>--<scope>"""
         timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
         safe_term = search_terms[0].replace(" ", "-").replace("/", "-")[:30]
@@ -104,7 +104,7 @@ class FileManager:
             for row in rows:
                 await f.write(",".join(_escape_csv(field) for field in row) + "\n")
 
-    def read_csv(self, path: Path) -> tuple:
+    def read_csv(self, path: Path) -> tuple[List[str], List[List[str]]]:
         try:
             with open(path, newline="") as f:
                 reader = csv.reader(f)
@@ -124,7 +124,11 @@ class FileManager:
 
 
 def _escape_csv(field: str) -> str:
-    """Escape a CSV field."""
+    """Escape a CSV field value per RFC 4180.
+
+    Wraps the field in double quotes if it contains commas, double quotes,
+    or newlines. Inner double quotes are escaped by doubling them.
+    """
     if "," in field or '"' in field or "\n" in field:
         return '"' + field.replace('"', '""') + '"'
     return field

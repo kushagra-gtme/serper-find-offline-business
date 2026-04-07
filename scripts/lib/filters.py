@@ -88,7 +88,12 @@ def filter_places(places: List[Place], filters: PlaceFilters) -> tuple:
 
 
 def deduplicate_places(places: List[Place], dedupe_by: str = "both") -> tuple:
-    """Deduplicate places by cid, website domain, or both. Keeps best record."""
+    """Deduplicate places by cid, website domain, or both.
+
+    For each duplicate group, keeps the record with the highest rating
+    (ties broken by review count). Places without any dedup key are
+    always kept. Original input order is preserved in the output.
+    """
     if not places:
         return [], {"input_count": 0, "output_count": 0, "duplicates_removed": 0}
 
